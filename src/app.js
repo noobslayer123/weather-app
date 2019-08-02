@@ -23,18 +23,6 @@ app.get('', (req, res) => {
   });
 });
 
-app.get('/about', (req, res) => {
-  res.render('about', {
-    title: 'About'
-  });
-});
-
-app.get('/help', (req, res) => {
-  res.render('help', {
-    title: 'Help'
-  });
-});
-
 app.get('/weather', (req, res) => {
   const { address } = req.query;
   if (!address) {
@@ -63,20 +51,13 @@ app.get('/weather', (req, res) => {
   });
 });
 
-app.get('/help/*', (req, res) => {
-  res.render('404', {
-    title: '404',
-    message: 'Help article not found.'
-  });
-});
-
 app.get('*', (req, res) => {
   res.render('404', {
-    title: '404',
+    title: '<< Back to Home',
     message: 'Page Not Found.'
   });
 });
 
 app.listen(port, () => {
-  console.log('Server is up on port 3000.');
+  console.log(`Server is up on port ${port}.`);
 });
